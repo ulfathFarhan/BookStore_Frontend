@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h3 class="myTitle">Cart</h3>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">BookId</th>
+        <th scope="col">CategoryId</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Title</th>
+        <th scope="col">price</th>
+      </tr>
+    </thead>
+    <tbody
+      *ngFor="let item of items; let i = index"
+      style="background-color: white"
+    >
+      <tr>
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.bookId }}</td>
+        <td>{{ item.categoryId }}</td>
+        <td>{{ item.isbn }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="row"
+    style="float: right; color: darkslategrey; font-weight: bolder"
+  >
+    <div class="col-sm-9">The total amount :</div>
+    <div class="col-sm-3">{{ tot }}</div>
+  </div>
+  <br /><br />
+  <div
+    class="row"
+    style="
+      float: right;
+      color: darkslategrey;
+      font-weight: bolder;
+      background-color: whitesmoke;
+    "
+  >
+    <div class="col-sm-10">The total amount + GST(18%) :</div>
+    <div class="col-sm-1">
+      <span class="GrandTot">{{ tot + tot * 0.18 }}</span>
+    </div>
+  </div>
+  <button class="btn btn-outline-success" style="width: 12rem">
+    Check out
+  </button>
+</div>

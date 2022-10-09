@@ -1,0 +1,11 @@
+.wrapper{
+    background-color: #fff;
+    padding:30px 40px;
+    border-radius:10px;
+    box-shadow:10px 5px #888;
+    margin-top:100px
+}
+.myTitle{
+    color: white;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
