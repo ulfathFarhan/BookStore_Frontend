@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private BASE_URL = 'http://localhost:44343/api';
   private registerUrl = '/users/register';
-  private loginUrl = 'auth/login';
+  private loginUrl = '/users/login';
   constructor(private http: HttpClient) {}
   register(user: any): Observable<any> {
     return this.http.post<any>(this.BASE_URL + this.registerUrl, user);
@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   checkToken(): boolean {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('Current_UserId')) {
       return true;
     } else {
       return false;

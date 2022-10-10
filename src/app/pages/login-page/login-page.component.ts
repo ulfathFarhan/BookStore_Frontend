@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Route, Router} from '@angular/router'
+import { Route, Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -10,12 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
   loginResponse = '';
   loginClass = '';
-  constructor(private fb: FormBuilder, private authService: AuthService,private router:Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
   loginForm = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, Validators.minLength(6)]],
@@ -33,9 +37,9 @@ export class LoginPageComponent implements OnInit {
       (response) => {
         this.loginResponse = 'Login Successfully, Thank you';
         this.loginClass = 'alert-success';
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        this.router.navigateByUrl('home');
+        localStorage.setItem('Current_UserId', response.userId);
+        localStorage.setItem('Current_UserName', response.userName);
+        this.router.navigateByUrl('cart');
       },
       (error) => {
         this.loginResponse = 'Login failed, try again';
@@ -43,6 +47,4 @@ export class LoginPageComponent implements OnInit {
       }
     );
   }
-
-
 }

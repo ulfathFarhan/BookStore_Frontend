@@ -8,7 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  public user: any = localStorage.getItem('user');
+  public Current_UserName: any = localStorage.getItem('Current_UserName');
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -16,13 +16,12 @@ export class NavbarComponent implements OnInit {
   ) {}
   myObj: any;
   ngOnInit(): void {
-    console.log(typeof this.user);
-    this.myObj = JSON.parse(this.user);
-    console.log(this.myObj?.firstName);
+    console.log(typeof this.Current_UserName);
   }
   onClickLogout() {
     this.authService.logout();
-    this.router.navigateByUrl('login');
+    window.location.reload();
+    this.router.navigateByUrl('home');
   }
   itemsCount() {
     return this.cartService.itemsCount();

@@ -32,8 +32,26 @@
     </ul>
   </div>
   <span style="padding-right: 5rem">
-    <p class="profile">{{ "Hey " + [myObj?.firstName] }}</p>
-    <button class="btn btn-dark" (click)="onClickLogout()">Log out</button>
+    <span *ngIf="Current_UserName; then thenBlock; else elseBlock"></span>
+    <ng-template #thenBlock
+      ><span class="profile">
+        {{ "Hey " + [Current_UserName] }}</span
+      ></ng-template
+    >
+    <ng-template #elseBlock
+      ><span class="profile">{{ "Hey User!" }}</span></ng-template
+    >
+
+    <!-- <p class="profile">{{ "Hey " + [myObj?.firstName] }}</p> -->
+
+    <button
+      *ngIf="Current_UserName"
+      class="btn btn-danger profile"
+      (click)="onClickLogout()"
+      style="margin-left: 2rem; margin-right: -1.3rem"
+    >
+      Log out
+    </button>
   </span>
   <a class="button btn btn-outline-secondary" routerLink="/cart">
     <i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;
